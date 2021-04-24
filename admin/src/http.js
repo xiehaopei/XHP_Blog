@@ -12,6 +12,7 @@ http.interceptors.request.use(
 
         // 设置token
         const token = localStorage.getItem("Authorization");
+        console.log("token",token)
         config.headers.Authorization = `Bearer ${token}`;
 
         return config;

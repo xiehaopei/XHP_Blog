@@ -25,7 +25,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
  * 跳过用户接口
  */
 app.use(expressJwt({
-    secret: "Libai"
+    secret: "XHP"
 }).unless({
     path: ["/admin/api/login", "/admin/api/user"]
 }));
@@ -38,6 +38,7 @@ app.use((err, req, res, next) => {
     }
     // Token过期
     if (err.name === "UnauthorizedError") {
+        console.log(err)
         res.status(err.status || 401);
         res.send({
             message: 'token过期，请重新登录',

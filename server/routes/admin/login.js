@@ -46,7 +46,7 @@ module.exports = (app, plugin, model) => {
         User.find(info, (err, docs) => {
             if(docs.length != 0){
                 // 生成token
-                const token = jwt.sign(info, 'Libai', {
+                const token = jwt.sign(info, 'XHP', {
                     expiresIn: 60 * 60 * 24  // 24小时过期
                 }); 
                 res.json({
