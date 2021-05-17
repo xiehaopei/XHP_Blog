@@ -41,11 +41,11 @@ const routes = [
 				name: "comment",
 				component: resolve => require(['@/views/comment'], resolve)
 			},
-			{
+			/* {
 				path: '/subscribe',
 				name: "subscribe",
 				component: resolve => require(['@/views/subscribe'], resolve)
-			},
+			}, */
 			{
 				path: '/myself',
 				name: "myself",

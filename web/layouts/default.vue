@@ -8,7 +8,7 @@
 export default {
 	data() {
 		return {
-			includeArr: ['index', 'about'] // 组件的 name
+			includeArr: ['index', 'about']
 		}
 	}
 }

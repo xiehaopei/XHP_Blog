@@ -1,5 +1,4 @@
 <template>
-	<!-- 避免初始化在页面显示，若有更好的方法，发我邮件，我想学习 /笑哭 -->
 	<div 
 		class="puzzle-container" 
 		:class="[isVerificationShow === true?'show':'', isVerificationShow === false?'exit':'',]"
@@ -97,9 +96,9 @@ export default {
 		puzzleImgList: {
 			type: Array,
 			default: () => [
-				"https://image.raindays.cn/Myself-Resources/coverPictureOriginal.png",
-				"https://image.raindays.cn/Myself-Resources/coverPictureOriginal.png",
-				"https://image.raindays.cn/Myself-Resources/coverPictureOriginal.png"
+				"/image/verify/1.jpg",
+				"/image/verify/2.jpg",
+				"/image/verify/3.jpg"
 			]
 		},
 		// 滑块的大小

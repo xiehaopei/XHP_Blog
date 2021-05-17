@@ -7,7 +7,6 @@
 				</div>
 			</div>
 			<div class="head">
-				<!-- <div class="logo"><span class="iconfont icon-logo4"></span></div> -->
 				<div class="logo-img">
 					<img src="/image/logo/logo1.png">
 					<img src="/image/logo/logo2.png">

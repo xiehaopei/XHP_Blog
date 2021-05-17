@@ -42,27 +42,27 @@ export default {
             list: [
                 {
                     icon: 'el-icon-sunrise-1',
-                    title: 'My world',
+                    title: 'My World',
                     path: '/',
                 },
                 {
                     icon: 'el-icon-heavy-rain',
-                    title: 'Small mood',
+                    title: 'Article List',
                     path: '/article',
                 },
                 {
                     icon: 'el-icon-light-rain',
-                    title: 'New mood',
+                    title: 'New Article',
                     path: '/article/info',
                 },
                 {
                     icon: 'el-icon-lightning',
-                    title: 'A letter',
+                    title: 'Quote List',
                     path: '/envelope',
                 },
                 {
                     icon: 'el-icon-cloudy-and-sunny',
-                    title: 'New letter',
+                    title: 'New Quote',
                     path: '/envelope/info',
                 },
                 {
@@ -72,14 +72,14 @@ export default {
                 },
                 {
                     icon: 'el-icon-sunrise-1',
-                    title: 'Myself',
+                    title: 'About Myself',
                     path: '/myself',
                 },
-                {
+                /* {
                     icon: 'el-icon-sunrise-1',
                     title: 'Subscribe',
                     path: '/subscribe',
-                },
+                }, */
                 {
                     icon: 'el-icon-sunset',
                     title: 'Setting',

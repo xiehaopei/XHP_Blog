@@ -1,27 +1,6 @@
 <template>
     <div class="index">
-        <h2><span class="el-icon-magic-stick"></span> 愿所有的美好如约而至，愿所有的黑暗都能看到希望。</h2>
-
-        <p class="time">
-            <span>{{time.year || '请珍惜时间'}}</span>
-            <span>{{time.date || '一寸光阴一寸金'}}</span>
-        </p>
-        <!-- <p class="time">{{time}}</p> -->
-
-        <section class="info">
-            <h4>Hello，你好，我是谁！</h4>
-            <div>
-                <p>重新认识、审视、定义一下自己吧。</p>
-                <ul>
-                    <li><span class="el-icon-ice-drink"></span>现在的你，是个怎样的人？</li>
-                    <li><span class="el-icon-lollipop"></span>你希望以后成为怎样的人？</li>
-                    <li><span class="el-icon-lollipop"></span>你心中的未来是怎样的？</li>
-                    <li><span class="el-icon-lollipop"></span>最想做的一件事是什么？</li>
-                    <li><span class="el-icon-lollipop"></span>你现在的生活，开心吗？</li>
-                    <li><span class="el-icon-hot-water"></span>心如止水，淡中得味，加油。</li>
-                </ul>
-            </div>
-        </section>
+        <h2><span class="el-icon-magic-stick"></span> 天行健，君子以自强不息！</h2>
 
         <section>
             <h3>article</h3>
@@ -30,7 +9,7 @@
                     <span class="total">{{$data.articleQty}}</span>
                     <span>篇</span>
                 </p>
-                <p>{{dateDiff($data.article.time)}} 发布了新的心情，继续加油哦！</p>
+                <p>{{dateDiff($data.article.time)}} 发布了新的文章，继续加油哦！</p>
             </div>
             <div class="box" v-else>
                 <p>
@@ -286,7 +265,6 @@ export default {
                 &::after{
                     content: "\e6a4";
                     font-family: element-icons!important;
-                    speak: none;
                     font-style: normal;
                     font-weight: 400;
                     font-variant: normal;

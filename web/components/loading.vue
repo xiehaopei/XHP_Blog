@@ -1,49 +1,101 @@
+<!--
+ * @Author: Haopei Xie
+ * @Date: 2020-11-05 23:50:34
+ * @LastEditTime: 2021-05-17 20:50:41
+ * @LastEditors: Haopei Xie
+ * @Description: Loading component
+ * @FilePath: \We-artsf:\web\XHP_Blog\web\components\loading.vue
+ * 
+-->
 <template>
-    <div class="cover-loading">
-        <span></span>
-    </div>
+  <div class="cover-loading">
+    <svg
+      class="spinner"
+      width="65px"
+      height="65px"
+      viewBox="0 0 66 66"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        class="path"
+        fill="none"
+        stroke-width="6"
+        stroke-linecap="round"
+        cx="33"
+        cy="33"
+        r="30"
+      />
+    </svg>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.cover-loading{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999999;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    span{
-        width: 15px;
-        height: 15px;
-        display: block;
-        margin-top: -20px;
-        border-radius: 50%;
-        background: #808080;
-        animation: Loading 2s both infinite;
-    }
+$offset: 187;
+$duration: 1.4s;
+
+.cover-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-@keyframes Loading{
-    5% { transform: scale(1); } 
-    10% { transform:scale(0.95); }
-    15% { transform:scale(0.9); }
-    20% { transform:scale(0.8); }
-    25% { transform:scale(0.7); }
-    30% { transform:scale(0.6); }
-    35% { transform:scale(0.5); }
-    40% { transform:scale(0.4); }
-    50% { transform:scale(0.3); }
-    60% { transform:scale(0.4); }
-    65% { transform:scale(0.5); }
-    70% { transform:scale(0.6); }
-    75% { transform:scale(0.7); }
-    80% { transform:scale(0.8); }
-    85% { transform:scale(0.85); }
-    90% { transform:scale(0.9); }
-    95% { transform:scale(0.95); }
-    100% { transform:scale(1); }
+
+.spinner {
+  animation: rotator $duration linear infinite;
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+.path {
+  stroke-dasharray: $offset;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash $duration ease-in-out infinite,
+    colors ($duration * 4) ease-in-out infinite;
+}
+
+@keyframes colors {
+  0% {
+    stroke: #4285f4;
+  }
+  25% {
+    stroke: #de3e35;
+  }
+  50% {
+    stroke: #f7c223;
+  }
+  75% {
+    stroke: #1b9a59;
+  }
+  100% {
+    stroke: #4285f4;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: $offset;
+  }
+  50% {
+    stroke-dashoffset: $offset/4;
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: $offset;
+    transform: rotate(450deg);
+  }
 }
 </style>
