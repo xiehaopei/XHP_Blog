@@ -27,25 +27,10 @@ const routes = [
 				component: resolve => require(['@/views/article/info'], resolve)
 			},
 			{
-				path: '/envelope',
-				name: "envelope",
-				component: resolve => require(['@/views/envelope/envelope'], resolve)
-			},
-			{
-				path: '/envelope/info',
-				name: "envelopeInfo",
-				component: resolve => require(['@/views/envelope/info'], resolve)
-			},
-			{
 				path: '/comment',
 				name: "comment",
 				component: resolve => require(['@/views/comment'], resolve)
 			},
-			/* {
-				path: '/subscribe',
-				name: "subscribe",
-				component: resolve => require(['@/views/subscribe'], resolve)
-			}, */
 			{
 				path: '/myself',
 				name: "myself",

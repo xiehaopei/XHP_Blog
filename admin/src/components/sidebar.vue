@@ -55,7 +55,7 @@ export default {
                     title: 'New Article',
                     path: '/article/info',
                 },
-                {
+                /* {
                     icon: 'el-icon-lightning',
                     title: 'Quote List',
                     path: '/envelope',
@@ -64,7 +64,7 @@ export default {
                     icon: 'el-icon-cloudy-and-sunny',
                     title: 'New Quote',
                     path: '/envelope/info',
-                },
+                }, */
                 {
                     icon: 'el-icon-sunrise-1',
                     title: 'Comment',
