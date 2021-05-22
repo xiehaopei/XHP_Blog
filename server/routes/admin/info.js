@@ -9,12 +9,10 @@ module.exports = (app, plugin, model) => {
         const result = await Promise.all([
             Info.findOne(),
             Article.findOne().sort({time: -1}),
-            Envelope.find().sort({time: -1}).limit(8),
             Article.countDocuments(),
             Comment.countDocuments(),
             Comment.find({status: 1}).countDocuments()
         ])
-        result[2].forEach(item => item._doc['time'] = dateFormat(item.time) )
 
         /**
          * 个人信息

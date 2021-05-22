@@ -5,9 +5,8 @@
         <canvas v-if="like" id="qrccode"></canvas>
 
         <div class="l icon">
-            <!-- <span class="iconfont icon-logo3 logo" @click="toIndex"></span> -->
             <div class="logo-img" @click="toIndex">
-                <img src="/image/logo/logo3.png">
+                <img src="/image/logo/home.png">
             </div>
             <span 
                 class="iconfont" 

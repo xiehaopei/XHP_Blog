@@ -14,7 +14,6 @@ async function getPage(db, page, size) {
     ])
 
     result[1].forEach(item => item._doc['time'] = dateFormat(item.time))
-
     return {
         total: result[0],
         data: result[1],

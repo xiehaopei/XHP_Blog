@@ -31,13 +31,13 @@ module.exports = (app, plugin, model) => {
         res.send(requestResult(data))
     })
 
-    // All articles
+    // Get Article List
     router.get('/article', async (req, res) => {
         const page = req.query.page || 1;
 
         const result = await Promise.all([
             Article.countDocuments(),
-            Article.find({hide:false}).sort({time:-1}).limit(Number(10)).skip(Number(10)*(page-1))
+            Article.find({hide:false}).sort({read:-1}).limit(Number(10)).skip(Number(10)*(page-1))
         ])
 
         result[1].forEach(item => item._doc['time'] = dateFormat(item.time))
@@ -86,7 +86,6 @@ module.exports = (app, plugin, model) => {
         }
     })
 
-    // Get comment
     router.get('/comment/:id', async (req, res) => {
         const id = Number(req.params.id)
         const result = await Comment.find({topic_id: id})
@@ -112,7 +111,6 @@ module.exports = (app, plugin, model) => {
         res.send(requestResult({data,total}))
     })
     
-    // Post a comment
     router.post('/comment', async (req, res) => {
         const commentCount = await Counter.findOneAndUpdate({
             name: 'comment'
@@ -176,116 +174,10 @@ module.exports = (app, plugin, model) => {
         res.send(data)
     })
 
-    // envelope
-    router.get('/envelope', async (req, res) => {
-
-        const page = req.query.page || 1;
-
-        const result = await Promise.all([
-            Envelope.countDocuments(),
-            Envelope.find().sort({time:-1}).limit(Number(10)).skip(Number(10)*(page-1))
-        ])
-        
-        result[1].forEach(item => {
-            item._doc['time'] = time(item.time)
-        })
-        /**
-         * 数据
-         * 当前页
-         * 总页数
-         */
-        const data = {
-            data: result[1],
-            page: Number(page),
-            totalPage: Math.ceil(result[0] / 10),
-        }
-        res.send(requestResult(data))
-    })
-
     router.get('/myself', async (req, res) => {
         const result = await Myself.findOne()
         res.send(requestResult(result))
     })
-
-    // subscribe
-    router.post('/subscribe', async (req, res) => {
-        const result = await Subscribe.findOne({email: req.body.email})
-
-        const send = {
-            email: req.body.email,
-            url: `${req.headers.origin}/subscribe?code=${req.body.code}&email=${req.body.email}`
-        }
-
-        // 添加验证 or 重新验证
-        if(!result || !result.active){
-            get_data(Object.prototype.toString.call(result) === "[object Null]")
-        } else {
-            // 已验证
-            res.send(requestResult())
-        }
-
-        async function get_data(type){
-            let data = '';
-            if(type){
-                data = await Promise.all([
-                    Subscribe.create(req.body),
-                    Info.findOne()
-                ])
-            } else {
-                data = await Promise.all([
-                    Subscribe.findOneAndUpdate({
-                        email: req.body.email
-                    }, req.body, {
-                        new: true
-                    }),
-                    Info.findOne()
-                ])
-            }
-            res.send(requestResult(data[0]))
-
-            const email_info = Object.assign({}, data[1]['email'], {web_name: data[1]['web_name']})
-            email(1, send, email_info) // 发送邮件验证
-        }
-    })
-
-    // subscribe result
-    router.post('/subscribe_result', async (req, res) => {
-        const result = await Subscribe.findOne({email: req.body.email})
-        const time = new Date().setDate(new Date().getDate())
-
-        // 邮箱错误
-        if(!result){
-            res.send({
-                status: 3,
-                message: '邮箱错误',
-            })
-            return;
-        }
-
-        // 开始验证
-        let data = {message:'success'}
-        if(!result.active){
-            if(req.body.code == result.code && time < result.time){
-                data = await Subscribe.findOneAndUpdate({
-                    email: req.body.email
-                }, {
-                    $set: { active: true }
-                }, {
-                    multi: true
-                }, (err, doc) => {
-                    return doc;
-                } )
-                // 验证成功
-                res.send(requestResult(data))
-            } else {
-                // 验证失败
-                res.send(requestResult())
-            }
-        } else {
-            // 已验证
-            res.send(requestResult(data))
-        }
-    })
-
+    
     app.use('/web/api', router)
 }

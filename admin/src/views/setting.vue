@@ -237,8 +237,6 @@ export default {
                 ['bucket', 'region', 'endPoint', 'accessKeySecret', 'accessKeyId', 'domain'],
                 {
                     bg_mood: '文章列表',
-                    bg_letter: '短语列表',
-                    bg_subscribe: '订阅页面',
                     bg_about: '个人介绍',
                 }
             ],
