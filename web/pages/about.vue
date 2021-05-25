@@ -2,7 +2,6 @@
     <div class="container">
         <Header 
             v-if="refresh" 
-            :music="music" 
             title="嘿，你今天笑了么(≖ᴗ≖)✧"
         ></Header>
         <client-only>
@@ -17,7 +16,6 @@ export default {
     data(){
         return{
             title: false,
-            music: 'https://image.raindays.cn/Myself-Resources/music/qianbaidu.mp3',
             refresh: true
         }
     },

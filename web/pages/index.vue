@@ -389,10 +389,6 @@ export default {
 			background: #eaeaea;
 			content: "";
 		}
-		.more {
-			display: inline-block;
-			margin-top: 90px;
-		}
 		/deep/ .bottom-loading {
 			position: relative;
 			z-index: 999;
