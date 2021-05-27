@@ -179,5 +179,12 @@ module.exports = (app, plugin, model) => {
         res.send(requestResult(result))
     })
     
+    // 全文检索
+    router.post('/article/search',async (req,res)=>{
+        const data = await Article.find({$text:{$search:req.body.query}})
+        console.log(requestResult(data))
+        res.send(requestResult(data))
+    })
+
     app.use('/web/api', router)
 }

@@ -4,7 +4,7 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-    id: Number,                         
+    id: Number,
     title: String,                      // 标题
     words: Number,                      // 字数
     content: String,                    // 内容
@@ -14,11 +14,11 @@ const schema = new mongoose.Schema({
     like: {                             // 喜欢
         type: Number,
         default: 0
-    },                       
+    },
     read: {                             // 阅读
         type: Number,
         default: 0
-    },                      
+    },
     hide: {                             // 隐藏
         type: Boolean,
         default: false
@@ -44,5 +44,7 @@ const schema = new mongoose.Schema({
         }
     },                      // 封面
 })
+
+schema.index({ title: "text", content: "text", describe: "text" })
 
 module.exports = mongoose.model('Article', schema)
