@@ -51,7 +51,7 @@ module.exports = {
       target: 'http://localhost:3000/',
       changeOrigin: true,
     },
-  }, 
+  },
   /*
   ** Customize the progress-bar color
   */
