@@ -1,11 +1,25 @@
 <template>
   <div>
-    <div class="wrap">
-      <div class="search">
-        <input type="text" class="searchTerm" placeholder="What are you looking for?" />
-        <button type="submit" class="searchButton">search</button>
+    <Header title="天行健，君子以自强不息！" v-if="refresh"></Header>
+
+    <div class="container">
+      <div class="wrap">
+        <div class="search">
+          <input
+            type="text"
+            v-model="query"
+            class="searchTerm"
+            placeholder="What are you looking for?"
+          />
+          <button type="submit" class="searchButton" @click="search">search</button>
+        </div>
       </div>
+
+      <ArticleList :articleList="ArticleList"/>
     </div>
+
+    <!-- loading -->
+    <Loading v-if="loading"></Loading>
   </div>
 </template>
 
@@ -13,18 +27,23 @@
 export default {
   data() {
     return {
-      query: ''
+      query: '',
+      ArticleList:[],
+      loading: false,
+      refresh: true
     };
   },
   methods: {
-    search() {
-      this.$axios
-        .post('article/search', {
-          query: this.query
-        })
-        .then((result) => {
-          console.log(result, 'res');
-        });
+    async search() {
+      this.loading = true;
+      const { data: res } = await this.$axios.post('article/search', {
+        query: this.query
+      });
+      this.ArticleList = res.body;
+      this.loading = false;
+      if(this.ArticleList.length === 0){
+        console.log('无结果')
+      }
     }
   }
 };
@@ -68,6 +87,7 @@ export default {
 .wrap {
   display: flex;
   justify-content: center;
-  margin-top: 20vh;
+  padding-top: 20vh;
+  padding-bottom: 20vh;
 }
 </style>

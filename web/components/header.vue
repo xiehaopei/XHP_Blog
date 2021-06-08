@@ -259,13 +259,13 @@ header {
     }
   }
   .myself {
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     display: inline-block;
     border-radius: 50%;
     overflow: hidden;
     vertical-align: bottom;
-    margin-left: 8px;
+    margin-left: 2px;
     cursor: pointer;
     img {
       width: 100%;
