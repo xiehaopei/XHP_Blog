@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Header v-if="refresh" title="嘿，你今天笑了么(≖ᴗ≖)✧"></Header>
+    <Header v-if="refresh" title="嘿，你今天笑了么(≖ᴗ≖)✧" :github="github_src"></Header>
     <client-only>
       <mavon-editor codeStyle="monokai-sublime" v-html="data.contentHtml" />
     </client-only>
@@ -13,7 +13,8 @@ export default {
   data() {
     return {
       title: false,
-      refresh: true
+      refresh: true,
+      github_src: 'https://github.com/xiehaopei/XHP_Blog'
     };
   },
   head() {
@@ -42,7 +43,6 @@ export default {
       return { data: '' };
     }
   }
-
 };
 </script>
 

@@ -24,6 +24,8 @@
 
     <!-- Comment -->
     <Comment :id="data.id" :title="data.title" @total="totalComment"></Comment>
+
+    <BackTop></BackTop>
   </div>
 </template>
 
@@ -140,7 +142,7 @@ export default {
     height: 2px;
     background: #50bcb6;
     transition: width 0.5s ease;
-    z-index: 999999;
+    z-index: 999;
   }
   h1.title {
     font-size: 30px;
@@ -262,18 +264,6 @@ export default {
         }
       }
     }
-  }
-  .back-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    height: 20px;
-    line-height: 20px;
-    background: #50bcb6;
-    font-size: 13px;
-    z-index: 9999;
-    padding: 0 5px;
-    color: #fff;
   }
 }
 

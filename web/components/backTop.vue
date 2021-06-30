@@ -54,8 +54,8 @@ export default {
 	visibility: hidden;
 	position: fixed;
 	right: 30px;
-	bottom: 20px;
-	z-index: 1;
+	bottom: 25px;
+	z-index: 1001;
 	opacity: 0;
 	cursor: pointer;
 	transition: all .3s;
@@ -74,7 +74,7 @@ export default {
 @media screen and (max-width: 600px) {
 	.back-top {
 		right: 20px;
-		bottom: 10px;
+		bottom: 20px;
 		span {
 			font-size: 30px;
 		}
