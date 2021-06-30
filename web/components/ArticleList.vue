@@ -2,27 +2,18 @@
   <div class="article-list">
     <div class="article" v-for="item in articleList" :key="item.id">
       <div class="article-img">
-        <img :src="item.image" />
+        <img :src="item.image.url" />
       </div>
       <div class="article-detail">
-        <div class="title">{{item.title}}</div>
+        <div class="title" @click="viewArticle(item.id)">{{item.title}}</div>
         <div class="describe">{{item.describe}}</div>
         <div class="footer">
           <div class="time">
-            <span>{{item.time}}</span>
+            <span>TIME {{item.time.slice(0,10)}}</span>
           </div>
           <div class="stuff">
             <div>
-              <i class="iconfont icon-text"></i>
-              <span>{{item.words}}</span>
-            </div>
-            <div>
-              <i class="iconfont icon-eye"></i>
-              <span>{{item.read}}</span>
-            </div>
-            <div>
-              <i class="iconfont icon-like"></i>
-              <span>{{item.like}}</span>
+              <span>LIKE {{item.like}} / READ {{item.read}}</span>
             </div>
           </div>
         </div>
@@ -33,7 +24,12 @@
 
 <script>
 export default {
-  props: ['articleList']
+  props: ['articleList'],
+  methods: {
+    viewArticle(id) {
+      this.$router.push(`/${id}`);
+    }
+  }
 };
 </script>
 
@@ -43,16 +39,16 @@ export default {
   flex-direction: column;
   flex: 1;
   margin: 0.1rem auto;
-  width: 98%;
+  width: 80%;
   max-width: 800px;
 
   .article {
     display: flex;
     overflow: hidden;
     flex-direction: column;
-    margin-bottom: 0.3rem;
+    margin-bottom: 30px;
     border: 1px solid #f1f1f1;
-    border-radius: 0.1rem;
+    border-radius: 10px;
     background-color: #fff;
     box-shadow: 0 0 10px #ddd;
     transition: box-shadow 0.3s ease;
@@ -61,40 +57,49 @@ export default {
       img {
         border-style: none;
         width: 100%;
-        height: 1.5rem;
+        height: 130px;
         object-fit: cover;
       }
     }
 
     &-detail {
-      padding: 0.1rem;
+      padding: 10px;
       text-align: left;
 
       .title {
-        padding: 0 0.1rem;
+        padding: 0 10px;
         font-weight: bold;
-        font-size: 0.4rem;
+        font-size: 24px;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: blue wavy underline;
+        }
       }
 
-      .discribe {
+      .describe {
         display: -webkit-box;
         overflow: hidden;
-        padding: 0 0.1rem;
-        max-height: 0.5rem;
-        line-height: 0.25rem;
-        font-size: 0.15rem;
+        padding: 10px 15px;
+        max-height: 50px;
+        line-height: 25px;
+        font-size: 15px;
         text-overflow: ellipsis;
         word-wrap: break-word;
 
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
+
+        &::selection {
+          background-color: #ffff00;
+        }
       }
 
       .footer {
         display: flex;
         justify-content: flex-end;
-        height: 0.3rem;
-        line-height: 0.3rem;
+        height: 30px;
+        line-height: 30px;
 
         .icon {
           margin-right: 5px;
@@ -114,7 +119,31 @@ export default {
     }
 
     &:hover {
-      box-shadow: 0 0 20px #ddd;
+      box-shadow: 0 0 20px rgb(88, 87, 87);
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .article-img {
+      img {
+        height: 100px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 780px) {
+    .article-img {
+      img {
+        height: 80px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .article-img {
+      img {
+        height: 50px;
+      }
     }
   }
 }

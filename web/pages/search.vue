@@ -9,6 +9,7 @@
             type="text"
             v-model="query"
             class="searchTerm"
+            @keyup.enter="search"
             placeholder="What are you looking for?"
           />
           <button type="submit" class="searchButton" @click="search">search</button>
@@ -41,6 +42,7 @@ export default {
       });
       this.ArticleList = res.body;
       this.loading = false;
+      console.log(this.ArticleList)
       if(this.ArticleList.length === 0){
         console.log('无结果')
       }
@@ -60,7 +62,7 @@ export default {
   width: 500px;
   border: 3px solid #00b4cc;
   border-right: none;
-  padding: 5px;
+  padding: 10px;
   height: 45px;
   border-radius: 5px 0 0 5px;
   outline: none;
