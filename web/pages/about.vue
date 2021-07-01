@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Header v-if="refresh" title="嘿，你今天笑了么(≖ᴗ≖)✧" :github="github_src"></Header>
+    <Header v-if="refresh" title="嘿，很高兴认识你(≖ᴗ≖)✧" :github="github_src"></Header>
     <client-only>
       <mavon-editor codeStyle="monokai-sublime" v-html="data.contentHtml" />
     </client-only>
