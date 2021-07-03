@@ -8,7 +8,7 @@ module.exports = {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'Author', content: 'Libai' },
+      { name: 'Author', content: 'XHP' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
