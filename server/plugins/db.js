@@ -5,7 +5,7 @@
  */
 module.exports = app => {
     const mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost:27017/blog', {
+    mongoose.connect('mongodb://root:admin@localhost:27017/blog?authSource=admin', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false
