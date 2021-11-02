@@ -8,7 +8,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	list-style: none;
+	list-style: none;·
 	box-sizing: border-box;
 }
 div, p, li, ol, span, a, input,textarea{
